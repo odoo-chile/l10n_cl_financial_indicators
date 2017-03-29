@@ -35,8 +35,8 @@ class L10nClFinancialIndicators(models.Model):
         
         _logger.info(
             'Data showed locally... Date: {}, Value: {}'.format(
-            data_json[indicadores[self.name][1]][0]['Fecha'],
-            data_json[indicadores[self.name][1]][0]['Valor']))
+                data_json[indicadores[self.name][1]][0]['Fecha'],
+                data_json[indicadores[self.name][1]][0]['Valor']))
         
         rate = float(
             data_json[indicadores[self.name][1]][0]['Valor'].replace(
@@ -62,15 +62,17 @@ class L10nClFinancialIndicators(models.Model):
                 'rate': 1/rate,
                 'name': rate_name}
             rates = self.env['res.currency.rate'].create(values)
-            print "se actualizó la moneda"
-            print indicadores[self.name][1]
+            _logger.info('currency has been updated {}'.format(rates))
+            _logger.info(indicadores[self.name][1])
 
+    @api.model
     def currency_schedule_update(self):
         for indic in indicadores.iteritems():
             _logger.info(
                 'Iterando la moneda "{}" por proceso planificado'.format(
                     indic[0]))
-            webservice_rec = self.env['webservices.server'].search([('name','=',indic[0])])
+            webservice_rec = self.env['webservices.server'].search(
+                [('name', '=', indic[0])])
             if webservice_rec:
                 webservice_rec.action_update_currency()
         return True

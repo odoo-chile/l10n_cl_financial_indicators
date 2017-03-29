@@ -6,7 +6,7 @@
             <field name='active'>True</field>
             <field name='priority'>5</field>
             <field name='interval_number'>1</field>
-            <field name='number_call'>-1</field>
+            <field name='numbercall'>-1</field>
             <field name='interval_type'>hours</field>
             <field name='model'>webservices.server</field>
             <field name='function'>currency_schedule_update</field>
@@ -14,4 +14,3 @@
         </record>
     </data>
 </openerp>
-
