@@ -7,8 +7,11 @@
             <field name="inherit_id" ref="webservices_generic.view_webservices_server_form" />
             <field name="arch" type="xml">
             	<xpath expr="/form/sheet/div/button[@string='Test Connection']" position="after">
-            		<button string="Update Currency" type="object" name="action_update_currency"
-                                    class="oe_stat_button" icon="fa-magnet" attrs="{'invisible':[('name', 'not in', ['SBIFUSD', 'SBIFUF', 'SBIFUTM', 'SBIFEUR'])]}"/>
+            		<button string="Update Currency" type="object"
+                         name="action_update_currency" class="oe_stat_button"
+                        icon="fa-magnet"
+                        attrs="{'invisible':[('name', 'not in',
+                        ['SBIFUSD', 'SBIFUF', 'SBIFUTM', 'SBIFEUR'])]}"/>
                 </xpath>
             </field>
         </record>
